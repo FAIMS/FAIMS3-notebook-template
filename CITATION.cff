@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this notebook to collect data, please cite it as below."
+authors:
+  - family-names: Crook
+    given-names: Penny
+    orcid: https://orcid.org/0000-0001-8509-7865
+  - family-names: Ballsun-Stanton
+    given-names: Brian
+    orcid: https://orcid.org/0000-0003-4932-7912
+references:
+  - authors:
+    - family-names: Tocknell
+      given-names: James
+      orcid: https://orcid.org/0000-0001-6637-6922
+    - family-names: Farrell
+      given-names: Aidan
+    - family-names: Sheng
+      given-names: Kate
+    - family-names: Mannering
+      given-names: Elizabeth
+      oricd: https://orcid.org/0000-0003-1976-4839
+    - family-names: Angreani
+      given-names: Rini
+    - family-names: Ballsun-Stanton
+      given-names: Brian
+      orcid: https://orcid.org/0000-0003-4932-7912   
+    - family-names: Cassidy
+      given-names: Steve
+      orcid: https://orcid.org/0000-0003-2357-9652
+    title: FAIMS 3  
+    type: software
+    version: v0.5.667
+    url: https://faims.edu.au
+title: "FAIMS3 Notebook {{template name}}"
+license:  CC-BY-4.0
+version: 0.0.1
+date-released: 2022-07-06
