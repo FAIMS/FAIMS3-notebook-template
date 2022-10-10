@@ -2,12 +2,12 @@
 
 set -euo pipefail
 
-export SERVER_FULLNAME="${1:-dev.db.faims.edu.au}" # dev, alpha, testing, selenium
-# export SPID="${2:-$SERVER_FULLNAME}"
-# cp 20220110-model1.json faims3-temp-notebook-migrator/testnotebook.json
-# cp 20220110-model1.json faims3-temp-notebook-migrator/
-# cd faims3-temp-notebook-migrator
-echo "Load FIPSoilData ${SERVER_FULLNAME}"
-#sed -e "s/##SPID##/${SPID}/g" 20220110-model1.json > fiptemp.json
-#python faims3-temp-notebook-migrator/loadNotebook.py $SERVER_FULLNAME "FIPSoilData Notebook (v0.1.0) for ${SPID}" "fiptemp.json"
-python3.10 faims3-temp-notebook-migrator/loadNotebook.py --project_key "csirogeochem" --notebook_json "csirogeochem.json"  --env-file=secret.json
+
+
+gitdir=$(basename "$(git rev-parse --show-toplevel)")
+jsonfile=$(find . -name "*.json" -a ! -name "secret*json" | head -n1 )
+projectname=$(echo -n "$gitdir" | sed -r 's#./FAIMS3-[^-]+-##g' | sed 's/_/ /g' | sed -r 's/^[_ ]//')
+export PROJECT_KEY=$(echo "${projectname,,}" | sed -E "s/[^A-Za-z0-9]+/_/g" | sed -E "s/_+$//")
+echo "Using $gitdir with $jsonfile as $projectname ($PROJECT_KEY) onto: $(jq .url secret.json)"
+
+python3.10 faims3-temp-notebook-migrator/loadNotebook.py --project_key "$PROJECT_KEY" --notebook_json "$jsonfile"  --env-file=secret.json
